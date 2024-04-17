@@ -35,11 +35,15 @@ function descendingListChattiest() {
       }
     }
 
+    if(currentUser == word){
+      continue; // do not add wordCount if username is found in log
+    }
+
     const current = map.get(currentUser);
     map.set(currentUser, {wordCount: ++current.wordCount})
   }
 
-  // Create a sorted orderd map
+  // Create a sorted orderd list
   let orderedList = [];
   for (const entry of map){
     orderedList.push({user: entry[0], count: entry[1].wordCount})
