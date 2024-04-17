@@ -11,9 +11,10 @@
 const logfile = "<user1> this is some chat word \n\
 <user2> the sky is blue \n\
 This line is still attributed to the user above haha \n\
-<user1> more chat from me! 38gad81 \n\
+<user1> more chat <user4> from me! 38gad81 \n\
 <user3> wow i can't believe i fked up";
 const list = descendingListChattiest(logfile);
+console.log(list);
 console.log(list.reduce( (acc, curr) => {
     acc.push(curr.user);
     return acc;
@@ -28,7 +29,7 @@ function descendingListChattiest() {
   let currentUser;
   for (let word of split) {
     word = word.trim();  
-    if(word[0] === '<' && word[word.length - 1] === '>')
+    if(/^<\w*?>$/.test(word))
     {
       currentUser = word;
       // username found in log
