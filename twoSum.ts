@@ -35,9 +35,6 @@ function twoSum(nums: number[], target: number): number[] {
   
   for(let i = 0; i < nums.length -1; i++) {
     let diff:number = target - nums[i];
-    if(diff < 0) {
-      continue;
-    }
 
     let b = nums.indexOf(diff, i+1);
     if( b > 0 ) {
