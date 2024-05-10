@@ -15,7 +15,27 @@ class BinarySearchTree {
   }
 
   searchNode (key) {
+    if(this.root === null){
+      console.log('Not found!');
+      return null;
+    }
 
+    let currentNode = this.root;
+    while(currentNode) {
+      if(currentNode.key === key) {
+        return currentNode;
+      }
+
+      if(key < currentNode.key) {
+        currentNode = currentNode.left;
+      }
+
+      if(key > currentNode.key) {
+        currentNode = currentNode.right;
+      }
+    }
+
+    return null;
   }
   
   insertNode (key) {
@@ -108,6 +128,7 @@ class BinarySearchTree {
 }
 
 function run (list) {
+  console.log('List:', list)
   const binTree = new BinarySearchTree();
   list.forEach((el,index) => {
     binTree.insertNode(el);
@@ -126,6 +147,8 @@ function run (list) {
   process.stdout.write('Post Order: ')
   binTree.printPostOrder(binTree.root);
   process.stdout.write('\n');
+
+  console.log(binTree.searchNode(1));
 }
 
 const arr = [5,1,6,3,8,4,9,7,0,2];
